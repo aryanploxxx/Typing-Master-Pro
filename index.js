@@ -40,13 +40,25 @@ window.addEventListener('keydown', (e) => {
         document.getElementById(class_to_target).style.backgroundColor = '#e7fbd3';
         document.getElementById(class_to_target).style.borderColor = '#e7fbd3';
         correct++;
-    } else if(e.key !== promptt[size]) {
+    } else if(e.key !== promptt[size] && e.key !== 'Backspace') {
         document.getElementById(class_to_target).style.color = '#e11d48';
         document.getElementById(class_to_target).style.backgroundColor = '#ffc0cb';
         document.getElementById(class_to_target).style.borderColor = '#ffc0cb';
         wrong++;
-    }
+    }   
+    
     size++;
+
+    if(e.key == 'Backspace') {
+        size = size - 3;
+        let prevClassToTarget = 'targeting' + (size + 1);
+        document.getElementById(prevClassToTarget).style.color = '#a6a3af';
+        document.getElementById(prevClassToTarget).style.backgroundColor = '#fff';
+        document.getElementById(prevClassToTarget).style.borderColor = '#d1d5db';
+        size++;
+    }
+
+
     if(size == promptt.length) {
         submit_test()
     }
